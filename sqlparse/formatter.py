@@ -153,9 +153,6 @@ def build_filter_stack(stack, options):
     if options.get('strip_comments'):
         stack.stmtprocess.append(filters.StripCommentsFilter())
 
-    # Grouping
-    stack.stmtprocess.append(stack.grouping_filter)
-
     # After grouping
     if options.get('use_space_around_operators', False):
         stack.enable_grouping()

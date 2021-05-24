@@ -20,7 +20,9 @@ class FilterStack:
         self.grouping_filter = None
 
     def enable_grouping(self):
-        self.grouping_filter = filters.GroupingFilter(True)
+        if self.grouping_filter is None:
+            self.grouping_filter = filters.GroupingFilter(True)
+            self.stmtprocess.append(self.grouping_filter)
 
     def run(self, sql, encoding=None):
         stream = lexer.tokenize(sql, encoding)
